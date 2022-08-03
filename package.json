@@ -1,0 +1,17 @@
+{
+  "name": "Readable-Backend",
+  "version": "0.0.0",
+  "description": "소모임 독서회 관리 프로젝트",
+  "main": "app.ts",
+  "repository": "https://github.com/ohtaehyun/Readable-Backend.git",
+  "author": "ohtaehyun <othdev95@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.6.3",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}
