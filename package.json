@@ -7,15 +7,21 @@
   "author": "ohtaehyun <othdev95@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "tsc-watch --onSuccess \" node ./dist/bin/app.js\""
+    "start:local": "tsc-watch --onSuccess \" cross-env NODE_ENV=local node ./dist/bin/app.js\""
   },
   "devDependencies": {},
   "dependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/node": "^18.6.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "inversify": "^6.0.1",
     "inversify-express-utils": "^6.4.3",
+    "mongoose": "^6.5.1",
     "nodemon": "^2.0.19",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
