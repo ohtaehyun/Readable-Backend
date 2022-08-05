@@ -7,7 +7,9 @@
   "author": "ohtaehyun <othdev95@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:local": "tsc-watch --onSuccess \" cross-env NODE_ENV=local node ./dist/bin/app.js\""
+    "start:local": "tsc-watch --onSuccess \" cross-env NODE_ENV=local node ./dist/bin/app.js\"",
+    "start:dev": "tsc-watch --onSuccess \" cross-env NODE_ENV=dev node ./dist/bin/app.js\"",
+    "start:prod": "tsc-watch --onSuccess \" cross-env NODE_ENV=prod node ./dist/bin/app.js\""
   },
   "devDependencies": {},
   "dependencies": {
