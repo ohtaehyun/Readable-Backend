@@ -17,7 +17,7 @@ class BasicAuthController{
             const [userName, password] = decoded.split(":");
 
             if(userName === 'basic' && password === 'Auth')
-                response.send('basic authenticated');
+                return response.send('basic authenticated');
             
             return this.basicAuthFail(response);
         }
