@@ -29,8 +29,8 @@ server.setConfig(async (app) => {
     }));
     app.use(bodyParser.json());
     app.use(cors());
-    await(init());
+    await(init(app));
 });
 
 let app = server.build();
-app.listen(3000);
+app.listen(process.env.SERVER_PORT);

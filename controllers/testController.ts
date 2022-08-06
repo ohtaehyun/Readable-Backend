@@ -7,7 +7,15 @@ import { TestService } from "../services/testService";
 @controller("/test")
 export class TestController{
     constructor(@inject(TYPES.TestService) private testService: TestService){}
-
+    
+    /**
+     * @swagger
+     *
+     * /test:
+     *   get:
+     *     produces:
+     *       - application/json
+     */
     @httpGet("/")
     private async getTest( @request() req: Request, @response() res: Response){
         const testStr = this.testService.serviceTest();
