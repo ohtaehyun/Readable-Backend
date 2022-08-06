@@ -10,6 +10,7 @@ import TYPES from '../constants/types';
 // declare metadata by @controller annotation
 import '../controllers/testController';
 import '../controllers/homeController';
+import '../controllers/basicAuthController';
 
 // declare services;
 import {TestService} from '../services/testService';
