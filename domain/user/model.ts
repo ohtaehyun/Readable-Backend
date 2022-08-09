@@ -16,6 +16,10 @@ class UserModel extends BaseModel{
             name: "test"
         })
     }
+
+    public async find(): Promise<any> {
+        return await this.model.find({}).lean();
+    }
 }
 
-module.exports = new UserModel(schema)
+export default new UserModel(schema)
