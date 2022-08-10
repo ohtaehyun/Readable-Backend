@@ -1,6 +1,6 @@
 const TYPES = {
     //service
-    TestService: Symbol.for("TestService"),
+    UsersService: Symbol.for("UsersService"),
 
     //Repository
 

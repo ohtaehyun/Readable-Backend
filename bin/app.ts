@@ -1,27 +1,15 @@
 import 'reflect-metadata';
 import * as bodyParser from 'body-parser';
 import cors from 'cors';
-import {init} from '../loader';
+import {getContainer, init} from '../loader';
+import {InversifyExpressServer} from 'inversify-express-utils';
 
-import { Container } from 'inversify';
-import { interfaces, InversifyExpressServer, TYPE } from 'inversify-express-utils';
-import TYPES from '../constants/types';
-
-// declare metadata by @controller annotation
-import '../controllers/testController';
-import '../controllers/homeController';
-
-// declare services;
-import {TestService} from '../services/testService';
-
-// set up container
-let container = new Container();
-
-// set up bindings
-container.bind(TYPES.TestService).to(TestService);
+//create container
+const container = getContainer();
 
 // create server
-let server = new InversifyExpressServer(container);
+const server = new InversifyExpressServer(container);
+
 server.setConfig(async (app) => {
     // add body parser
     app.use(bodyParser.urlencoded({
@@ -29,8 +17,8 @@ server.setConfig(async (app) => {
     }));
     app.use(bodyParser.json());
     app.use(cors());
-    await(init());
+    await(init(app));
 });
 
-let app = server.build();
-app.listen(3000);
+const app = server.build();
+app.listen(process.env.SERVER_PORT);
