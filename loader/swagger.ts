@@ -1,5 +1,6 @@
 import swaggerJSDoc from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express"
+import swaggerUi from "swagger-ui-express";
+import components from "./swaggerComponent/index";
 const options = {
     swaggerDefinition: {
         openapi: '3.0.3',
@@ -11,11 +12,12 @@ const options = {
         servers: [
         ],
     },
-    apis: ['./controllers/testController.ts'],
+    apis: ['./domain/*/controller.ts'],
 };
 
 
 export function initSwagger(app: any) {
     const specs = swaggerJSDoc(options);
+    Object.assign(specs, components);
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 }

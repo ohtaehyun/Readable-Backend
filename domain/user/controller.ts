@@ -12,7 +12,6 @@ export class UserController {
     @httpGet("/insertTest")
     private async insertTest(@request() req: Request, @response() res: Response) {
         try{
-            await UserModel.create();
             res.send("inserted");
         } catch(e) {
             console.error(e);

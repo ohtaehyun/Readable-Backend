@@ -1,8 +1,7 @@
 const TYPES = {
     //service
     UsersService: Symbol.for("UsersService"),
-
-    //Repository
+    AuthService: Symbol.for("AithService"),
 
     //Middleware
 }
