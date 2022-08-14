@@ -12,7 +12,6 @@ export class UserController {
     @httpGet("/insertTest")
     private async insertTest(@request() req: Request, @response() res: Response) {
         try{
-            await UserModel.create();
             res.send("inserted");
         } catch(e) {
             console.error(e);
@@ -22,8 +21,9 @@ export class UserController {
     @httpGet("/readTest")
     private async readTest(@request() req: Request, @response() res: Response) {
         try{
-            const user = await UserModel.find();
-            res.send(user);
+            const users = await UserModel.find();
+            users.forEach(user => console.log(user._id.toString()));
+            res.send(users);
         } catch(e) {
             console.error(e);
         }
