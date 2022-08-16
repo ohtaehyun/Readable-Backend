@@ -9,10 +9,10 @@ export interface IUser extends Document {
 }
 
 const UsersSchema = new Schema<IUser>({
-    email: {type: String, require: true},
+    email: {type: String, require: true, unique: true},
     password: {type: String, require: true},
     salt: {type: String, require: true},
-    name: {type: String, require: true}
+    name: {type: String, require: true, unique: true}
 });
 
 export default model("Users", UsersSchema, "users")

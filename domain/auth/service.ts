@@ -13,6 +13,7 @@ export class AuthService {
     public async signUp(signUpReqVo: SignUpReq) {
         const user = signUpReqVo.getAll() as IUser;
         user.salt =this.generateSalt();
+        user.password = cryptoJs.PBKDF2(user.password,user.salt).toString();
         await Users.create(user);
     }
 
