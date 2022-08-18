@@ -27,7 +27,7 @@ server.setErrorConfig(app => {
         if(err){
             if(err instanceof BaseException)
                 return err.sendRes(res);
-            
+            console.error(err);
             return new BaseException().sendRes(res);
         }
         next();

@@ -12,7 +12,7 @@ const UsersSchema = new Schema<IUser>({
     email: {type: String, require: true, unique: true, index: 1},
     password: {type: String, require: true},
     salt: {type: String, require: true},
-    name: {type: String, require: true, unique: true}
+    name: {type: String, require: true}
 });
 
 export default model("Users", UsersSchema, "users")

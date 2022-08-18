@@ -15,6 +15,10 @@ class UserModel extends BaseModel{
     public async findAll(): Promise<IUser[]> {
         return await this.model.find({}).lean();
     }
+
+    public async findByEmail(email: string): Promise<IUser> {
+        return await this.model.findOne({email}).lean();
+    }
 }
 
 export default new UserModel(schema)
