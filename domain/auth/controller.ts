@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { inject } from "inversify";
-import { controller, httpPost, request, response } from "inversify-express-utils";
+import { controller, httpPost, next, request, response } from "inversify-express-utils";
 import TYPES from "../../constants/types";
 import { AuthService } from "./service";
 import SignUpReq from "./vo/request/signUpReq";
@@ -36,6 +36,8 @@ export class AuthController {
      *     responses:
      *       200:
      *         description: success
+     *       400:
+     *         description: errcode [100 = 잘못된 이메일 형식]
      */
     @httpPost('/signup')
     private async signUp(@request() req: Request, @response() res: Response) {
@@ -45,7 +47,7 @@ export class AuthController {
             res.send(200);
         }
         catch(err) {
-
+            throw err;
         }
     }
 }
