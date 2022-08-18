@@ -21,7 +21,7 @@ export class UserController {
     @httpGet("/readTest")
     private async readTest(@request() req: Request, @response() res: Response) {
         try{
-            const users = await UserModel.find();
+            const users = await UserModel.findAll();
             users.forEach(user => console.log(user._id.toString()));
             res.send(users);
         } catch(e) {

@@ -12,7 +12,7 @@ class UserModel extends BaseModel{
         await this.model.create(user)
     }
 
-    public async find(): Promise<IUser[]> {
+    public async findAll(): Promise<IUser[]> {
         return await this.model.find({}).lean();
     }
 }
