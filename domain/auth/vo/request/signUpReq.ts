@@ -15,10 +15,11 @@ export default class SignUpReq {
     }
 
     private validate() {
-        if(!regexUtil.emailCheck(this.email))
-            throw new BadRequestException(ErrorCode.INVALID_EMAIL);
-        //여기서 입력값 검증 regex 관련 모듈 필요 
-
+        if(!regexUtil.isValidEmail(this.email))
+            throw new BadRequestException(ErrorCode.INVALID_EMAIL, '잘못된 이메일 형식입니다.');
+        
+        if(!regexUtil.isValidPassword(this.password))
+            throw new BadRequestException(ErrorCode.INVALID_PASSWORD, '잘못된 비밀번호 형식입니다.');
     }
 
     public getAll() {
