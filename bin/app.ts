@@ -15,7 +15,7 @@ const server = new InversifyExpressServer(container);
 server.setConfig(async (app) => {
     // add body parser
     app.use(bodyParser.urlencoded({
-        extended: true
+        extended: false
     }));
     app.use(bodyParser.json());
     app.use(cors());
