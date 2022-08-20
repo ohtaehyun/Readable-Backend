@@ -6,6 +6,7 @@ import * as cryptoJs from "crypto-js";
 import { IUser } from "../user/schema";
 import { BadRequestException } from "../../lib/exception/badRequestException";
 import { ErrorCode } from "../../constants/errorCode";
+import EmailExistReq from "./vo/request/emailExistReq";
 
 
 @injectable()
@@ -20,6 +21,12 @@ export class AuthService {
         user.salt =this.generateSalt();
         user.password = cryptoJs.PBKDF2(user.password,user.salt).toString();
         await Users.create(user);
+    }
+
+    public async isEmailExist(emailExistReq: EmailExistReq) {
+        const {email} = emailExistReq.getAll();
+        const user = await Users.findByEmail(email);
+        return user ? true : false;
     }
 
     private generateSalt() {
