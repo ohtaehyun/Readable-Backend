@@ -1,6 +1,6 @@
 class RegexUtil {
     public isValidEmail(email: string): boolean {
-        const emailRegex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+        const emailRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
         return emailRegex.test(email);
     }
 
