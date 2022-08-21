@@ -1,5 +1,3 @@
-import { injectable } from "inversify";
-import { Schema } from "mongoose";
 import { BaseModel } from "../../lib/mongo/model";
 import schema, { IUser } from "./schema"
 
