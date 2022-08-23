@@ -14,18 +14,18 @@ export class AuthService {
     constructor() {}
 
     public async signUp(signUpReqVo: SignUpReq) {
-        const user = signUpReqVo.getAll() as IUser;
-        const existUser = await Users.findByEmail(user.email);
+        const existUser = await Users.findByEmail(signUpReqVo.email);
+
         if(!!existUser) 
             throw new BadRequestException(ErrorCode.ALREADY_EXIST_EMAIL, '이미 존재하는 이메일입니다.');
-        user.salt =this.generateSalt();
-        user.password = cryptoJs.PBKDF2(user.password,user.salt).toString();
+            
+        const user = {...signUpReqVo, salt: this.generateSalt()} as IUser;
+        user.password = cryptoJs.PBKDF2(user.password, user.salt).toString();
         await Users.create(user);
     }
 
     public async isEmailExist(emailExistReq: EmailExistReq) {
-        const {email} = emailExistReq.getAll();
-        const user = await Users.findByEmail(email);
+        const user = await Users.findByEmail(emailExistReq.email);
         return user ? true : false;
     }
 
