@@ -3,7 +3,7 @@ import { MongoMemoryServer } from "mongodb-memory-server"
 
 let mongo: any = null;
 
-export const connectDB = async () => {
+export async function connectDB() {
     mongo = await MongoMemoryServer.create();
     const uri = mongo.getUri();
 
@@ -19,7 +19,7 @@ export async function dropDB() {
     }
 };
 
-export const dropCollections = async () => {
+export async function dropCollections() {
     if (mongo) {
         const collections = await mongoose.connection.db.collections();
         for (let collection of collections) {
