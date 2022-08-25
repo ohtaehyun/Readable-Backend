@@ -3,14 +3,14 @@ import { BadRequestException } from "../../../../lib/exception/badRequestExcepti
 import { regexUtil } from "../../../../lib/util/regex";
 
 export default class SignUpReq {
-    private email: string;
-    private password: string;
-    private name: string;
+    readonly email: string;
+    readonly password: string;
+    readonly name: string;
 
-    constructor(req: {email:string, password:string, name:string}) {
-        this.email = req.email;
-        this.password = req.password;
-        this.name = req.name;
+    constructor(params: {email:string, password:string, name:string}) {
+        this.email = params.email;
+        this.password = params.password;
+        this.name = params.name;
         this.validate();
     }
 
@@ -20,13 +20,5 @@ export default class SignUpReq {
         
         if(!regexUtil.isValidPassword(this.password))
             throw new BadRequestException(ErrorCode.INVALID_PASSWORD, '잘못된 비밀번호 형식입니다.');
-    }
-
-    public getAll() {
-        return {
-            email: this.email,
-            password: this.password,
-            name: this.name
-        };
     }
 }
