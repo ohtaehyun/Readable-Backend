@@ -14,4 +14,12 @@ export class BaseModel<T>{
     public async findOne(query: object = {}, projection: object = {}): Promise<T> {
         return await this.model.findOne(query, projection).lean();
     }
+
+    public async updateMany(query: object, update: object) {
+        return await this.model.updateMany(query, update);
+    }
+
+    public async updateOne(query: object, update: object) {
+        return await this.model.updateOne(query, update);
+    }
 }
