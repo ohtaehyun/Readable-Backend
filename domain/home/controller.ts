@@ -9,4 +9,9 @@ export class HomeController{
     private async getHome(@request() req: Request, @response() res: Response){
         res.send("home sweet home~");
     }
+
+    @httpGet("test")
+    private async getTest(@request() req: Request, @response() res: Response){
+        res.send("test");
+    }
 }
