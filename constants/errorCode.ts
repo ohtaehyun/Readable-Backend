@@ -3,4 +3,4 @@ export enum ErrorCode {
     INVALID_PASSWORD = 101,
     ALREADY_EXIST_EMAIL = 102,
     UNKNOWN = 99999
-}
+} 
