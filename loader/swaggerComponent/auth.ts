@@ -18,5 +18,18 @@ export default {
                 example: 'khilkhil94'
             }
         }
+    },
+    LoginResponse: {
+        type: 'object',
+        properties: {
+            accessToken: {
+                type: 'string',
+                description: '엑세스 토큰'
+            },
+            refreshToken: {
+                type: 'string',
+                description: '리프레쉬 토큰',
+            }
+        }
     }
 }

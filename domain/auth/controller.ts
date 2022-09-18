@@ -6,6 +6,7 @@ import TYPES from "../../constants/types";
 import { BadRequestException } from "../../lib/exception/badRequestException";
 import { AuthService } from "./service";
 import EmailExistReq from "./vo/request/emailExistReq";
+import loginReq from "./vo/request/loginReq";
 import SignUpReq from "./vo/request/signUpReq";
 
 /**
@@ -83,6 +84,34 @@ export class AuthController {
 
             const emailExistReq = new EmailExistReq({email: email as string});
             res.send({exist: await this.authService.isEmailExist(emailExistReq)});
+        }
+        catch(err) {
+            throw err;
+        }
+    }
+
+    /**
+     * @swagger
+     *
+     * /auth/login:
+     *   post:
+     *     description: 로그인 요청
+     *     tags: [Auth]
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: success
+     *         content: 
+     *           application/json:
+     *             schema:
+     *               $ref: '#/components/schemas/LoginResponse'
+     */
+    @httpPost('/login')
+    private async login(@request() req: Request, @response() res: Response) {
+        try {
+            const loginRequestVo = new loginReq(req.body);
+            res.send(await this.authService.login(loginRequestVo));
         }
         catch(err) {
             throw err;
