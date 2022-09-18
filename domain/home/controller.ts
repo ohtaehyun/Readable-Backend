@@ -12,6 +12,6 @@ export class HomeController{
 
     @httpGet("test")
     private async getTest(@request() req: Request, @response() res: Response){
-        res.send("test");
+        res.send("test2");
     }
 }
